@@ -1,0 +1,16 @@
+info:
+  name: 10 · Verificar cuenta
+  type: http
+  seq: 10
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/api/dev/users/b0000000-0000-0000-0000-000000000002/verify"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

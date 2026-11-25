@@ -1,0 +1,19 @@
+info:
+  name: 05 · Correo inválido
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/dev/users"
+  body:
+    type: json
+    data: '{ "email": 12345 }'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
