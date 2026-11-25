@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { config } from './config/environment.js';
 import healthRoutes from './routes/healthRoutes.js';
+import devUserRoutes from './routes/devUserRoutes.js';
 import { notFoundHandler, errorHandler } from './middlewares/errorHandler.js';
 
 const app = express();
@@ -22,6 +23,12 @@ app.use(morgan(config.isProduction ? 'combined' : 'dev'));
 
 // 2. Montaje de Enrutadores Modulares
 app.use('/api/health', healthRoutes);
+
+// Rutas de laboratorio de la Sesión 09: todavía NO tienen autenticación
+// (llega en la Semana 3), por eso jamás se montan en producción.
+if (!config.isProduction) {
+    app.use('/api/dev/users', devUserRoutes);
+}
 
 // Ruta raíz informativa
 app.get('/', (req, res) => {
